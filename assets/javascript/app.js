@@ -13,21 +13,13 @@ $(document).ready(function() {
 	var database = firebase.database();
 	var connectionsRef = database.ref("/connections");
 	var connectedRef = database.ref(".info/connected");
-	var users;
+
   
 	connectedRef.on("value", function(snap) {
 		if (snap.val()) {
 			var con = connectionsRef.push(true);
 			con.onDisconnect().remove();
 		}
-	});
-
-	connectionsRef.on("value", function(snap) {
-		users = snap.numChildren();
-		console.log(users);
-		if (users == 2) {
-		$("#name").attr("class", "disabled");
-	} else {$("#name").removeClass("disabled");}
 	});
 
   
@@ -39,5 +31,13 @@ $(document).ready(function() {
 		var name = $("#name").val().trim();
 		console.log(name);
 		$("#name").val("");
+		var checkPlayer1 = database.ref("/player1");
+		checkPlayer1.once("value", function(snap) {
+			if(!snap.exists()){
+				
+			}
+		});
+		
+		
 	});
 });
