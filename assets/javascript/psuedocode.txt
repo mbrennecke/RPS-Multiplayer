@@ -1,0 +1,11 @@
+user connects
+user inputs name
+	name sent to database
+	if first player, added to player 1
+	if not first player, added to player 2
+	no more players may connect to this game
+once both players are connected
+	player 1 picks
+	player 2 picks
+	winner 
+increment wins and loses
